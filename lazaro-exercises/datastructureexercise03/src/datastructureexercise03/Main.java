@@ -9,7 +9,27 @@ import java.util.*;
 public class Main {
 
     static int solution(int[] playerDeckA, int[]playerDeckB){
-      return 0;
+        Queue<Integer> filaCartsA = new LinkedList<>();
+        Queue<Integer> filaCartsB = new LinkedList<>();
+
+        for(int i = 0; i< playerDeckA.length; i++){
+            filaCartsA.offer(playerDeckA[i]);
+            filaCartsB.offer(playerDeckB[i]);
+        }
+        int rounds = 0;
+        while(!filaCartsA.isEmpty() && !filaCartsB.isEmpty()) {
+            Integer numberInA = filaCartsA.poll();
+            Integer numberInB = filaCartsB.poll();
+            rounds++;
+            if ( numberInA >= numberInB){
+                filaCartsA.add(numberInA);
+                filaCartsA.add(numberInB);
+            } else {
+                filaCartsB.add(numberInB);
+                filaCartsB.add(numberInA);
+            }
+        }
+        return rounds;
     }
 
     public static void main(String[] args) {
