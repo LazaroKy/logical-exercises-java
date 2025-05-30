@@ -9,7 +9,17 @@ package datastructureexercise02;
 public class Main {
 
     static int solution(double[] tempos, double[] custos){
-        return 0;
+        int menorIndex = 0;
+        double custoAntes = tempos[0] * custos[0];
+        for (int i = 0; i< tempos.length; i++){
+            double custoAgora = tempos[i] * custos[i];
+            if (custoAgora< custoAntes){
+                custoAntes = custoAgora;
+                menorIndex = i;
+            }
+        }
+
+        return menorIndex;
     }
 
     public static void main(String[] args) {
