@@ -6,10 +6,49 @@ package datastructureexercise04;
 //Regras dos duelos: Um robô vence outro se ele tiver Velocidade maior e energia maior do que o adversário.
 // Em caso de empate (mesma velocidade ou mesma energia), ele não vence. Cada robô é comparado com todos os outros
 
+//import java.util.HashMap;
+//import java.util.Map;
+
 public class Main {
 
     static int solution(int[] velocidades, int[]energia){
-        return 0;
+        int roboCampeao = 0;
+
+        int[] vitorias = new int[velocidades.length];
+        for (int i = 0; i < velocidades.length; i++) {
+            for (int j = 0; j < velocidades.length; j++) {
+                if (i != j && velocidades[i] > velocidades[j] && energia[i] > energia[j]) {
+                    vitorias[i]++;
+                }
+            }
+        }
+        int maiorVitoria = 0;
+        for (int i = 0; i< vitorias.length;i++){
+            if (maiorVitoria< vitorias[i]){
+                maiorVitoria= vitorias[i];
+                roboCampeao = i;
+            }
+        }
+//        Map<Integer, Integer> roboVitorias = new HashMap<>();
+//        for (int i = 0; i< velocidades.length; i++){
+//            int lutadorAdversario =0;
+//            int victory = 0;
+//            while (lutadorAdversario< velocidades.length){
+//                if (lutadorAdversario != i && velocidades[i]> velocidades[lutadorAdversario] && energia[i]> energia[lutadorAdversario]){
+//                    victory++;
+//                    roboVitorias.put(i,victory);
+//                }
+//                lutadorAdversario++;
+//            }
+//        }
+//        int value= Integer.MIN_VALUE;
+//        for (int keys : roboVitorias.keySet()){
+//            if (roboVitorias.get(keys)> value){
+//                value= roboVitorias.get(keys);
+//                roboCampeao = keys;
+//            }
+//        }
+        return roboCampeao;
     }
 
     public static void main(String[] args) {
@@ -42,7 +81,7 @@ public class Main {
         System.out.println("Result 2: Expected result: 0 - Your result: "+result2);
         System.out.println("Result 3: Expected result: 2 - Your result: "+result3);
         System.out.println("Result 4: Expected result: 0 - Your result: "+result4);
-        System.out.println("Result 5: Expected result: 0 - Your result: "+result5);
+        System.out.println("Result 5: Expected result: 2 - Your result: "+result5);
 
     }
 }
